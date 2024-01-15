@@ -9,8 +9,14 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const createRoutes = require("./routes/blog.js");
-
 app.use("/api", createRoutes);
+
+
+
+const authRoutes = require("./routes/auth.js")
+app.use("/api", authRoutes)
+
+
 
 
 
@@ -19,12 +25,12 @@ app.use("/api", createRoutes);
 //     message: "hello world from / route",
 //     });
 // });
-
+ 
 
 // app.get("/even", evenFn);
 // app.get("/odd", testFunction);
 
-let PORT = 3000
+let PORT = 8000
 app.listen(PORT, () => {
 
     console.log(`server is started in ${PORT}`);

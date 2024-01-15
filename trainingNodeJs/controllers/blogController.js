@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const {blogs} = require("../model/index");
 
 exports.createBlog = async (req, res) => {
@@ -33,13 +34,26 @@ exports.deleteBlogsById = async (req, res) => {
     let result = await blogs.destroy({
         where: {
             id : req.paraams.id,
+        }
+    })
 
-
-        };
-    });
     res.status(200).json({
         success:true,
         message:"Deleted successfully",
 
     });
+};
+
+exports.updateBlog = async (req, res) => {
+    console.log(req.params);
+
+
+    // // get all the blog posts from the database[] and send them back to the client
+    let result = await blogs.update({...req.body}, {where: {
+        id: req.params.id
+    }});
+    res.status(200).json({
+        success: true,
+        message: "updated successfully"
+    })
 };

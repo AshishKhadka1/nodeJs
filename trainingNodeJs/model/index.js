@@ -33,5 +33,6 @@ sequelize
     db.sequelize = sequelize;
 
     db.blogs = require("./../model/blog.js")(sequelize, DataTypes);
+    db.auth = require("./../model/auth.js")(sequelize, DataTypes);
 
-    module.exports = db;
+       module.exports = db;
