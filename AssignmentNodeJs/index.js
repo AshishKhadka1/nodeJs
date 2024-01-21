@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}))
 const createRoutes = require("./routes/blogs.js")
 app.use("/api/items", createRoutes)
 
-let port = 3000
+let port = 4000
 app.listen(port, ()=>{
     console.log(`Server is started in ${port}`)
 })
