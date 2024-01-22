@@ -9,16 +9,16 @@ exports.createBlog = async (req, res) => {
         let createdBlog = await blogs.create(data);
 
         if (createdBlog) {
-            res.status(200).json({
+            res.status(300).json({
                 data: createdBlog,
                 message: "Created Successfully",
             });
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(600).json({
             success: false,
-            message: "Internal Server Error",
+            message: "Server Error",
         });
     }
 };
@@ -26,12 +26,12 @@ exports.createBlog = async (req, res) => {
 exports.getBlogs = async (req, res) => {
     try {
         let result = await blogs.findAll();
-        res.status(200).send(result);
+        res.status(300).send(result);
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(600).json({
             success: false,
-            message: "Internal Server Error",
+            message: "Server Error",
         });
     }
 };
@@ -41,7 +41,7 @@ exports.getBlogsById = async (req, res) => {
         let result = await blogs.findByPk(req.params.id);
 
         if (result) {
-            res.status(200).send(result);
+            res.status(300).send(result);
         } else {
             res.status(404).json({
                 success: false,
@@ -50,9 +50,9 @@ exports.getBlogsById = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(600).json({
             success: false,
-            message: "Internal Server Error",
+            message: "Server Error",
         });
     }
 };
@@ -66,7 +66,7 @@ exports.deleteBlogsById = async (req, res) => {
         });
 
         if (result === 1) {
-            res.status(200).json({
+            res.status(300).json({
                 success: true,
                 message: "Deleted Successfully",
             });
@@ -78,9 +78,9 @@ exports.deleteBlogsById = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(600).json({
             success: false,
-            message: "Internal Server Error",
+            message: "Server Error",
         });
     }
 };
@@ -95,7 +95,7 @@ exports.updateBlog = async (req, res) => {
             });
 
         if (result[0] === 1) {
-            res.status(200).json({
+            res.status(300).json({
                 success: true,
                 message: "Updated successfully",
             });
@@ -107,9 +107,9 @@ exports.updateBlog = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({
+        res.status(600).json({
             success: false,
-            message: "Internal Server Error",
+            message: "Server Error",
         });
     }
 };
